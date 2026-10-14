@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rodrigues Tur | Excursões Aéreas e Rodoviárias em Grupo - João Pessoa & Campina Grande</title>
+  <meta name="description" content="Rodrigues Tur com Elisa & Bruno Rodrigues. Pacotes de turismo religioso, Aparecida do Norte, Canção Nova, Campos do Jordão, Gramado, Salvador e viagens em grupo com saídas da Paraíba.">
+  <meta name="keywords" content="Rodrigues Tur, turismo religioso Joao Pessoa, excursao Aparecida do Norte Paraiba, viagem Campos do Jordao, rodriguesturpb, turismo Campina Grande, excursao terceira idade">
+
+  <!-- OpenGraph / Social Sharing -->
+  <meta property="og:title" content="Rodrigues Tur | Excursões em Grupo com Amor e Segurança">
+  <meta property="og:description" content="Roteiros para Aparecida do Norte, Canção Nova, Campos do Jordão, Gramado e muito mais com saídas de João Pessoa e Campina Grande.">
+  <meta property="og:image" content="assets/images/rodrigues-avatar.png">
+  <meta property="og:url" content="https://rodriguestour.helpusbr.com">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon: HelpUS Logo as requested -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/images/favicon-192x192.png">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              sun: '#f59e0b',
+              sunHover: '#d97706',
+              ocean: '#0284c7',
+              oceanLight: '#38bdf8',
+              teal: '#0d9488',
+              navy: '#0b1329',
+              darkSurface: '#030712',
+              cardSurface: '#0f172a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body class="bg-[#030712] text-slate-100 antialiased selection:bg-amber-400 selection:text-black">
+
+  <div id="app" class="min-h-screen flex flex-col justify-between relative">
+
+    <!-- 1. TOP ANNOUNCEMENT TICKER -->
+    <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 text-slate-950 text-xs font-bold py-1.5 px-4 text-center shadow-md flex items-center justify-center gap-2 overflow-hidden sticky top-0 z-50">
+      <i class="fa-solid fa-plane-departure text-slate-950 animate-bounce"></i>
+      <span class="transition-all duration-300 font-semibold">{{ announcements[activeAnnouncementIdx] }}</span>
+    </div>
+
+    <!-- 2. MAIN HEADER -->
+    <header class="sticky top-[30px] z-40 bg-glass border-b border-slate-800/80 shadow-lg">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+        
+        <!-- Brand Logo & Identity -->
+        <a href="#inicio" class="flex items-center gap-3.5 group cursor-pointer flex-shrink-0">
+          <div class="relative w-12 h-12 rounded-full overflow-hidden p-0.5 bg-gradient-to-tr from-amber-400 via-cyan-400 to-sky-500 shadow-md group-hover:scale-105 transition-transform flex-shrink-0">
+            <img :src="profile.avatarImg" alt="Rodrigues Tur" class="w-full h-full object-cover rounded-full bg-white">
+          </div>
+          <div class="flex flex-col justify-center">
+            <div class="flex items-center gap-1.5">
+              <span class="font-extrabold text-xl sm:text-2xl tracking-tight text-white group-hover:text-amber-400 transition-colors">
+                RODRIGUES <span class="text-cyan-400">TUR</span>
+              </span>
+              <span class="hidden md:inline-block bg-amber-400/20 text-amber-300 text-[10px] px-2 py-0.5 rounded-full font-semibold border border-amber-400/30">
+                CADASTUR
+              </span>
+            </div>
+            <span class="text-[11px] text-slate-400 hidden sm:block tracking-wide">
+              Excursões & Viagens • Elisa & Bruno Rodrigues
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden lg:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <a href="#inicio" class="hover:text-amber-400 transition-colors">{{ t.navHome }}</a>
+          <a href="#roteiros" class="hover:text-amber-400 transition-colors">{{ t.navTours }}</a>
+          <a href="#stories" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+            <i class="fa-brands fa-instagram text-pink-400"></i>
+            {{ t.navStories }}
+          </a>
+          <a href="#simulador" class="hover:text-amber-400 transition-colors">Simulador</a>
+          <a href="#diferenciais" class="hover:text-amber-400 transition-colors">{{ t.navAbout }}</a>
+          <a href="#depoimentos" class="hover:text-amber-400 transition-colors">{{ t.navTestimonials }}</a>
+          <a href="#faq" class="hover:text-amber-400 transition-colors">{{ t.navFaq }}</a>
+        </nav>
+
+        <!-- Right Side: i18n Language & WhatsApp CTA -->
+        <div class="flex items-center gap-3">
+          
+          <!-- i18n Language Selector -->
+          <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-lg p-1 text-xs">
+            <button 
+              @click="setLanguage('pt')" 
+              :class="lang === 'pt' ? 'bg-amber-400 text-slate-950 font-bold shadow-sm' : 'text-slate-400 hover:text-white'"
+              class="px-2 py-1 rounded transition-colors"
+              title="Português">
+              🇧🇷 PT
+            </button>
+            <button 
+              @click="setLanguage('en')" 
+              :class="lang === 'en' ? 'bg-amber-400 text-slate-950 font-bold shadow-sm' : 'text-slate-400 hover:text-white'"
+              class="px-2 py-1 rounded transition-colors"
+              title="English">
+              🇺🇸 EN
+            </button>
+            <button 
+              @click="setLanguage('es')" 
+              :class="lang === 'es' ? 'bg-amber-400 text-slate-950 font-bold shadow-sm' : 'text-slate-400 hover:text-white'"
+              class="px-2 py-1 rounded transition-colors"
+              title="Español">
+              🇪🇸 ES
+            </button>
+          </div>
+
+          <!-- WhatsApp Direct Action -->
+          <a 
+            :href="'https://wa.me/' + profile.phone1Raw + '?text=' + encodeURIComponent('Olá Elisa e Bruno da Rodrigues Tur! Visitei o site rodriguestour.helpusbr.com e gostaria de mais informações.')"
+            target="_blank"
+            class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg shadow-md hover:shadow-green-500/20 transition-all transform hover:-translate-y-0.5">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span>{{ t.btnReserveWhatsapp }}</span>
+          </a>
+
+          <!-- Mobile Hamburger Button -->
+          <button 
+            @click="toggleMobileMenu" 
+            class="lg:hidden p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-300 hover:text-white focus:outline-none">
+            <i :class="mobileMenuOpen ? 'fa-solid fa-xmark text-lg' : 'fa-solid fa-bars text-lg'"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div v-if="mobileMenuOpen" class="lg:hidden bg-slate-950 border-b border-slate-800 px-4 py-4 space-y-3">
+        <a @click="toggleMobileMenu" href="#inicio" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">{{ t.navHome }}</a>
+        <a @click="toggleMobileMenu" href="#roteiros" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">{{ t.navTours }}</a>
+        <a @click="toggleMobileMenu" href="#stories" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">{{ t.navStories }}</a>
+        <a @click="toggleMobileMenu" href="#simulador" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">Simulador de Viagem</a>
+        <a @click="toggleMobileMenu" href="#diferenciais" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">{{ t.navAbout }}</a>
+        <a @click="toggleMobileMenu" href="#depoimentos" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">{{ t.navTestimonials }}</a>
+        <a @click="toggleMobileMenu" href="#faq" class="block py-2 text-slate-300 hover:text-amber-400 font-medium">{{ t.navFaq }}</a>
+        <div class="pt-2 border-t border-slate-800">
+          <a 
+            :href="'https://wa.me/' + profile.phone1Raw"
+            target="_blank"
+            class="flex items-center justify-center gap-2 bg-emerald-600 text-white font-bold py-2.5 rounded-lg text-sm">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            {{ t.btnReserveWhatsapp }}
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 3. HERO SECTION -->
+    <section id="inicio" class="relative min-h-[580px] lg:min-h-[660px] flex items-center justify-center overflow-hidden py-16 px-4">
+      <!-- Background Image with Gradient Overlay -->
+      <div class="absolute inset-0 z-0">
+        <img src="assets/images/dest-hero.jpg" alt="Viagens Rodrigues Tur" class="w-full h-full object-cover opacity-25 filter brightness-75 scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#030712] via-[#030712]/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#030712] via-[#030712]/70 to-[#030712]"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 max-w-5xl mx-auto text-center space-y-6">
+        
+        <!-- Trust Badge -->
+        <div class="inline-flex items-center gap-2 bg-slate-900/90 border border-amber-400/40 rounded-full px-4 py-1.5 shadow-lg">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span class="text-xs sm:text-sm font-semibold text-amber-300 tracking-wide">
+            {{ t.heroBadge }}
+          </span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+          {{ t.heroHeadline }}
+        </h1>
+
+        <!-- Subheading -->
+        <p class="max-w-3xl mx-auto text-base sm:text-lg text-slate-300 leading-relaxed font-light">
+          {{ t.heroSub }}
+        </p>
+
+        <!-- Fast Feature Pills -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg">
+            <i class="fa-solid fa-plane text-cyan-400"></i>
+            <span>Embarque JPA & CPV</span>
+          </div>
+          <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg">
+            <i class="fa-solid fa-user-shield text-amber-400"></i>
+            <span>Guias Elisa & Bruno</span>
+          </div>
+          <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg">
+            <i class="fa-solid fa-hotel text-emerald-400"></i>
+            <span>Hotéis Selecionados</span>
+          </div>
+          <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg">
+            <i class="fa-solid fa-credit-card text-sky-400"></i>
+            <span>Em até 10x no Cartão</span>
+          </div>
+        </div>
+
+        <!-- Hero Actions -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+          <a href="#roteiros" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold text-sm uppercase tracking-wider px-8 py-3.5 rounded-xl shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 transition-all transform hover:-translate-y-0.5">
+            <i class="fa-solid fa-compass"></i>
+            <span>Explorar Próximos Roteiros</span>
+          </a>
+          <a href="#simulador" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900/90 hover:bg-slate-800 text-white font-semibold text-sm border border-slate-700 hover:border-cyan-400 px-8 py-3.5 rounded-xl shadow-md transition-all">
+            <i class="fa-solid fa-calculator text-cyan-400"></i>
+            <span>Simulador de Parcelamento</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. INSTAGRAM STORIES CAROUSEL (@rodriguesturpb) -->
+    <section id="stories" class="py-10 bg-slate-950/70 border-y border-slate-800/80 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 flex items-center justify-center text-white text-base">
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+            <div>
+              <h2 class="text-base sm:text-lg font-bold text-white flex items-center gap-2">
+                Destaques do Instagram 
+                <a :href="profile.instagramUrl" target="_blank" class="text-xs text-pink-400 hover:underline font-normal">@rodriguesturpb</a>
+              </h2>
+              <p class="text-xs text-slate-400">Toque para ver fotos e memórias reais das nossas viagens</p>
+            </div>
+          </div>
+          
+          <a :href="profile.instagramUrl" target="_blank" class="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-300 hover:text-amber-400 transition-colors font-medium">
+            <span>Ver perfil completo</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </a>
+        </div>
+
+        <!-- Story Circles Horizontal Scroll -->
+        <div class="flex items-center gap-4 sm:gap-6 overflow-x-auto pb-4 pt-1 no-scrollbar">
+          <div 
+            v-for="(story, idx) in stories" 
+            :key="story.id"
+            @click="openStoryModal(idx)"
+            class="flex flex-col items-center gap-2 cursor-pointer group flex-shrink-0">
+            <div class="story-ring">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden p-0.5 bg-slate-950">
+                <img :src="story.thumb" :alt="story.title" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300">
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-slate-300 group-hover:text-amber-400 transition-colors text-center truncate max-w-[80px]">
+              {{ story.title }}
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. SMART TOUR SEARCH & CATEGORIES -->
+    <section class="py-6 bg-[#030712] sticky top-[110px] z-30 shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 backdrop-blur-md shadow-xl">
+          <div class="flex flex-col md:flex-row items-center gap-4">
+            
+            <!-- Search Input -->
+            <div class="relative w-full md:w-1/2">
+              <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+              <input 
+                type="text" 
+                v-model="searchQuery" 
+                :placeholder="t.searchPlaceholder"
+                class="w-full bg-slate-950 border border-slate-700/80 rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-cyan-400 transition-colors">
+              <button 
+                v-if="searchQuery" 
+                @click="searchQuery = ''"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </button>
+            </div>
+
+            <!-- Category Filter Pills -->
+            <div class="flex items-center gap-2 overflow-x-auto w-full md:w-1/2 no-scrollbar py-1">
+              <button 
+                @click="setCategory('all')"
+                :class="selectedCategory === 'all' ? 'bg-amber-400 text-slate-950 font-bold' : 'bg-slate-950 border border-slate-800 text-slate-300 hover:border-slate-700'"
+                class="px-3.5 py-2 rounded-xl text-xs whitespace-nowrap transition-all">
+                {{ t.categoryAll }}
+              </button>
+              <button 
+                @click="setCategory('religioso')"
+                :class="selectedCategory === 'religioso' ? 'bg-amber-400 text-slate-950 font-bold' : 'bg-slate-950 border border-slate-800 text-slate-300 hover:border-slate-700'"
+                class="px-3.5 py-2 rounded-xl text-xs whitespace-nowrap transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-cross text-amber-400" :class="selectedCategory === 'religioso' ? 'text-slate-950' : ''"></i>
+                {{ t.categoryReligioso }}
+              </button>
+              <button 
+                @click="setCategory('serra')"
+                :class="selectedCategory === 'serra' ? 'bg-amber-400 text-slate-950 font-bold' : 'bg-slate-950 border border-slate-800 text-slate-300 hover:border-slate-700'"
+                class="px-3.5 py-2 rounded-xl text-xs whitespace-nowrap transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-mountain text-sky-400" :class="selectedCategory === 'serra' ? 'text-slate-950' : ''"></i>
+                {{ t.categorySerra }}
+              </button>
+              <button 
+                @click="setCategory('praia')"
+                :class="selectedCategory === 'praia' ? 'bg-amber-400 text-slate-950 font-bold' : 'bg-slate-950 border border-slate-800 text-slate-300 hover:border-slate-700'"
+                class="px-3.5 py-2 rounded-xl text-xs whitespace-nowrap transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-umbrella-beach text-teal-400" :class="selectedCategory === 'praia' ? 'text-slate-950' : ''"></i>
+                {{ t.categoryPraia }}
+              </button>
+              <button 
+                @click="setCategory('compras')"
+                :class="selectedCategory === 'compras' ? 'bg-amber-400 text-slate-950 font-bold' : 'bg-slate-950 border border-slate-800 text-slate-300 hover:border-slate-700'"
+                class="px-3.5 py-2 rounded-xl text-xs whitespace-nowrap transition-all flex items-center gap-1.5">
+                <i class="fa-solid fa-bag-shopping text-rose-400" :class="selectedCategory === 'compras' ? 'text-slate-950' : ''"></i>
+                {{ t.categoryCompras }}
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. PACKAGES & TOURS SHOWCASE -->
+    <section id="roteiros" class="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <div class="text-center space-y-3">
+        <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-400">
+          <i class="fa-solid fa-map-location-dot"></i>
+          <span>Roteiros Selecionados & Confirmados</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Próximas Excursões com Saídas da Paraíba
+        </h2>
+        <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-400">
+          Todos os nossos pacotes contam com aéreo ou ônibus leito turismo, hospedagem de qualidade, roteiros guiados e o carinho da família Rodrigues Tur.
+        </p>
+      </div>
+
+      <!-- Packages Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div 
+          v-for="pkg in filteredPackages" 
+          :key="pkg.id"
+          class="bg-glass-card rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 group">
+          
+          <div>
+            <!-- Image & Badge Container -->
+            <div class="relative h-56 overflow-hidden">
+              <img :src="pkg.image" :alt="pkg.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+              
+              <!-- Category Badge -->
+              <div class="absolute top-3 left-3 bg-slate-900/90 border border-slate-700/80 rounded-lg px-2.5 py-1 text-xs font-semibold text-cyan-300">
+                {{ pkg.categoryLabel }}
+              </div>
+
+              <!-- Status Badge -->
+              <div class="absolute top-3 right-3 bg-amber-400 text-slate-950 rounded-lg px-2.5 py-1 text-xs font-extrabold shadow-sm badge-glow">
+                {{ pkg.status }}
+              </div>
+
+              <!-- Departure & Duration Overlay -->
+              <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-slate-200">
+                <span class="flex items-center gap-1.5 font-medium">
+                  <i class="fa-regular fa-calendar-days text-amber-400"></i>
+                  {{ pkg.dates }}
+                </span>
+                <span class="flex items-center gap-1.5 font-semibold bg-slate-900/80 px-2 py-0.5 rounded">
+                  <i class="fa-solid fa-clock text-cyan-400"></i>
+                  {{ pkg.duration }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-5 space-y-4">
+              
+              <div>
+                <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors leading-snug">
+                  {{ pkg.title }}
+                </h3>
+                <p class="text-xs text-slate-400 mt-1 line-clamp-2">
+                  {{ pkg.subtitle }}
+                </p>
+              </div>
+
+              <!-- Key Features / Highlights list -->
+              <div class="space-y-1.5 border-t border-slate-800/80 pt-3 text-xs text-slate-300">
+                <div class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-400 mt-0.5 flex-shrink-0"></i>
+                  <span class="line-clamp-1">{{ pkg.highlights[0] }}</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-400 mt-0.5 flex-shrink-0"></i>
+                  <span class="line-clamp-1">{{ pkg.highlights[1] }}</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-emerald-400 mt-0.5 flex-shrink-0"></i>
+                  <span class="line-clamp-1">{{ pkg.highlights[2] }}</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Card Footer & Pricing -->
+          <div class="p-5 pt-0 border-t border-slate-800/80 mt-4 space-y-4">
+            
+            <div class="flex items-baseline justify-between pt-3">
+              <div>
+                <span class="text-[11px] text-slate-400 uppercase tracking-wider block">{{ t.priceFrom }}</span>
+                <div class="flex items-baseline gap-1.5">
+                  <span class="text-2xl font-extrabold text-amber-400">{{ formatBRL(pkg.pricePix) }}</span>
+                  <span class="text-[10px] text-emerald-400 font-semibold bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800/60">Pix</span>
+                </div>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] text-slate-400 block">Ou no cartão:</span>
+                <span class="text-xs font-semibold text-slate-200">{{ pkg.installmentsText }}</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="grid grid-cols-2 gap-2">
+              <button 
+                @click="openItineraryModal(pkg)"
+                class="inline-flex items-center justify-center gap-1.5 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs py-2.5 px-3 rounded-xl border border-slate-700 transition-colors">
+                <i class="fa-solid fa-list-check text-cyan-400"></i>
+                <span>Ver Roteiro</span>
+              </button>
+
+              <a 
+                :href="getDirectTourWhatsAppUrl(pkg)"
+                target="_blank"
+                class="inline-flex items-center justify-center gap-1.5 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-md transition-all">
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>Reservar</span>
+              </a>
+            </div>
+
+            <!-- Official PDF Button if available -->
+            <a 
+              v-if="pkg.pdfUrl" 
+              :href="pkg.pdfUrl" 
+              download
+              class="w-full inline-flex items-center justify-center gap-2 bg-amber-400/10 hover:bg-amber-400/20 text-amber-300 border border-amber-400/30 text-[11px] font-semibold py-1.5 rounded-lg transition-colors">
+              <i class="fa-solid fa-file-pdf text-amber-400"></i>
+              <span>Baixar Roteiro Oficial em PDF (Aparecida)</span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 7. INTERACTIVE TRIP SIMULATOR & DIRECT BOOKING -->
+    <section id="simulador" class="py-16 bg-slate-950 border-t border-slate-800/80 relative">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8">
+          
+          <div class="text-center space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-cyan-400 flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-calculator"></i>
+              <span>Simulação Online Transparente</span>
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white">
+              {{ t.simulatorTitle }}
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+              {{ t.simulatorSub }}
+            </p>
+          </div>
+
+          <!-- Simulator Form Controls -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Select Tour -->
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-300">{{ t.simSelectTour }}</label>
+              <select 
+                v-model="simTourId" 
+                class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400">
+                <option v-for="pkg in packages" :key="pkg.id" :value="pkg.id">
+                  {{ pkg.title }} ({{ pkg.dates }})
+                </option>
+              </select>
+            </div>
+
+            <!-- Number of Passengers -->
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-300">{{ t.simPassengers }}</label>
+              <div class="flex items-center gap-3">
+                <button 
+                  @click="simPassengers > 1 ? simPassengers-- : null"
+                  class="w-11 h-11 rounded-xl bg-slate-800 text-white font-bold hover:bg-slate-700 flex items-center justify-center">
+                  -
+                </button>
+                <div class="flex-1 text-center bg-slate-950 border border-slate-700 rounded-xl py-2.5 text-base font-bold text-amber-400">
+                  {{ simPassengers }} viajante(s)
+                </div>
+                <button 
+                  @click="simPassengers < 10 ? simPassengers++ : null"
+                  class="w-11 h-11 rounded-xl bg-slate-800 text-white font-bold hover:bg-slate-700 flex items-center justify-center">
+                  +
+                </button>
+              </div>
+            </div>
+
+            <!-- Room Type -->
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-300">{{ t.simRoomType }}</label>
+              <select 
+                v-model="simRoomType" 
+                class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyan-400">
+                <option value="double">{{ t.simRoomDouble }}</option>
+                <option value="triple">{{ t.simRoomTriple }}</option>
+                <option value="single">{{ t.simRoomSingle }}</option>
+              </select>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-300">{{ t.simPaymentMethod }}</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button 
+                  @click="simPaymentMethod = 'pix'"
+                  :class="simPaymentMethod === 'pix' ? 'bg-amber-400 text-slate-950 font-bold border-amber-400' : 'bg-slate-950 text-slate-300 border-slate-800'"
+                  class="border rounded-xl py-3 px-3 text-xs transition-colors flex items-center justify-center gap-1.5">
+                  <i class="fa-brands fa-pix text-sm"></i>
+                  <span>{{ t.simPixOption }}</span>
+                </button>
+                <button 
+                  @click="simPaymentMethod = 'card'"
+                  :class="simPaymentMethod === 'card' ? 'bg-amber-400 text-slate-950 font-bold border-amber-400' : 'bg-slate-950 text-slate-300 border-slate-800'"
+                  class="border rounded-xl py-3 px-3 text-xs transition-colors flex items-center justify-center gap-1.5">
+                  <i class="fa-solid fa-credit-card text-sm"></i>
+                  <span>10x no Cartão</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Calculation Result Card -->
+          <div class="bg-slate-950/80 border border-slate-800 rounded-2xl p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <span class="text-xs text-slate-400 uppercase tracking-wider block">{{ t.simTotalEstimated }}</span>
+              <div class="text-3xl sm:text-4xl font-black text-amber-400">
+                {{ simCalculations.formattedTotal }}
+              </div>
+              <span v-if="simPaymentMethod === 'card'" class="text-xs text-slate-300 block mt-1">
+                Ou em até 10 parcelas mensais de <strong class="text-cyan-400">{{ simCalculations.formattedInstallment }}</strong>
+              </span>
+              <span v-else class="text-xs text-emerald-400 block mt-1">
+                ✓ Desconto especial de pagamento à vista aplicado
+              </span>
+            </div>
+
+            <a 
+              :href="getSimWhatsAppUrl()"
+              target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-extrabold text-sm uppercase px-8 py-4 rounded-xl shadow-lg shadow-green-600/20 hover:shadow-green-600/40 transition-all transform hover:-translate-y-0.5">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+              <span>{{ t.simBtnBook }}</span>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 8. WHY TRAVEL WITH RODRIGUES TUR (DIFERENCIAIS) -->
+    <section id="diferenciais" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="text-center space-y-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Nossa Tradição & Compromisso</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+          {{ t.whyUsTitle }}
+        </h2>
+        <p class="max-w-2xl mx-auto text-sm sm:text-base text-slate-400">
+          {{ t.whyUsSub }}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="bg-glass-card rounded-2xl p-6 space-y-3 border border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center justify-center text-amber-400 text-xl">
+            <i class="fa-solid fa-people-roof"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">{{ t.whyCard1Title }}</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">{{ t.whyCard1Desc }}</p>
+        </div>
+
+        <div class="bg-glass-card rounded-2xl p-6 space-y-3 border border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/30 flex items-center justify-center text-cyan-400 text-xl">
+            <i class="fa-solid fa-bus-simple"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">{{ t.whyCard2Title }}</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">{{ t.whyCard2Desc }}</p>
+        </div>
+
+        <div class="bg-glass-card rounded-2xl p-6 space-y-3 border border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-emerald-400/10 border border-emerald-400/30 flex items-center justify-center text-emerald-400 text-xl">
+            <i class="fa-solid fa-church"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">{{ t.whyCard3Title }}</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">{{ t.whyCard3Desc }}</p>
+        </div>
+
+        <div class="bg-glass-card rounded-2xl p-6 space-y-3 border border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-sky-400/10 border border-sky-400/30 flex items-center justify-center text-sky-400 text-xl">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white">{{ t.whyCard4Title }}</h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">{{ t.whyCard4Desc }}</p>
+        </div>
+
+      </div>
+
+      <!-- Real Group Photo Banner from Instagram -->
+      <div class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 items-center">
+        <div class="p-8 sm:p-12 space-y-4">
+          <div class="inline-flex items-center gap-2 bg-emerald-400/10 text-emerald-400 text-xs font-bold px-3 py-1 rounded-full border border-emerald-400/20">
+            <i class="fa-solid fa-heart"></i>
+            <span>Nossa Grande Família de Viajantes</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-white">
+            Quem viaja uma vez com a Rodrigues Tur, viaja sempre!
+          </h3>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            Aqui na Rodrigues Tur, cada passageiro é tratado com respeito, dignidade e muito carinho. Criamos laços de amizade que duram a vida inteira. Nossas camisetas personalizadas, momentos de cantoria e atenção a cada detalhe fazem da sua viagem uma recordação abençoada.
+          </p>
+          <div class="pt-2 flex items-center gap-4 text-xs font-semibold text-amber-400">
+            <span>✓ Camisa oficial inclusa em grupos especiais</span>
+            <span>✓ Assistência no aeroporto</span>
+          </div>
+        </div>
+        <div class="h-80 sm:h-96 overflow-hidden">
+          <img src="assets/images/post-brasilia-grupo.png" alt="Grupo de Viajantes Rodrigues Tur" class="w-full h-full object-cover">
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 9. TESTIMONIALS -->
+    <section id="depoimentos" class="py-16 bg-slate-950 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        
+        <div class="text-center space-y-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">Depoimentos Reais</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+            O Que Dizem os Nossos Passageiros
+          </h2>
+          <p class="max-w-xl mx-auto text-sm text-slate-400">
+            A satisfação e o sorriso de quem já viveu a experiência com a Rodrigues Tur:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div 
+            v-for="(t, idx) in testimonials" 
+            :key="idx"
+            class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between space-y-4">
+            
+            <div class="space-y-3">
+              <div class="flex items-center gap-1 text-amber-400 text-xs">
+                <i v-for="star in t.rating" :key="star" class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed">
+                "{{ t.comment }}"
+              </p>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800/80">
+              <h4 class="text-sm font-bold text-white">{{ t.name }}</h4>
+              <p class="text-[11px] text-slate-400">{{ t.city }} • <span class="text-cyan-400">{{ t.tour }}</span></p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 10. CUSTOM TOURS (VIAGEM SOB MEDIDA) -->
+    <section class="py-16 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-6">
+        
+        <div class="text-center space-y-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Grupos Fechados & Paróquias</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+            Monte Sua Viagem em Grupo Sob Medida
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 max-w-xl mx-auto">
+            Deseja organizar uma peregrinação religiosa com sua paróquia, viagem em família ou evento com amigos? Nós organizamos aéreo, ônibus executivo e hospedagem com valores exclusivos!
+          </p>
+        </div>
+
+        <form @submit.prevent="sendCustomTourWhatsApp" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-semibold text-slate-300 block mb-1">Seu Nome Completo:</label>
+            <input type="text" v-model="customForm.name" required placeholder="Ex: Maria José Rodrigues" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-slate-300 block mb-1">Seu WhatsApp com DDD:</label>
+            <input type="text" v-model="customForm.phone" required placeholder="Ex: (83) 98760-5812" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-slate-300 block mb-1">Destino Desejado:</label>
+            <input type="text" v-model="customForm.destination" placeholder="Ex: Aparecida, Fátima, Maragogi, Gramado..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-slate-300 block mb-1">Estimativa de Pessoas:</label>
+            <input type="text" v-model="customForm.passengers" placeholder="Ex: 25 a 40 pessoas" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+          </div>
+          <div class="sm:col-span-2">
+            <label class="text-xs font-semibold text-slate-300 block mb-1">Observações ou Data Prevista:</label>
+            <textarea v-model="customForm.notes" rows="2" placeholder="Nos conte um pouco sobre o que esperam da viagem..." class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-amber-400"></textarea>
+          </div>
+          <div class="sm:col-span-2 flex justify-center pt-2">
+            <button type="submit" class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold text-sm uppercase px-8 py-3.5 rounded-xl shadow-lg shadow-amber-500/20 transition-all">
+              <i class="fa-brands fa-whatsapp text-lg"></i>
+              <span>Solicitar Orçamento Personalizado no WhatsApp</span>
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- 11. FAQ ACCORDION -->
+    <section id="faq" class="py-16 bg-slate-950 border-t border-slate-800/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <div class="text-center space-y-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">Tire Suas Dúvidas</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+            Perguntas Frequentes
+          </h2>
+        </div>
+
+        <div class="space-y-3">
+          <div 
+            v-for="(f, idx) in faqs" 
+            :key="idx" 
+            class="bg-slate-900 border border-slate-800 rounded-2xl p-5 space-y-2">
+            <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-circle-question text-amber-400 text-sm"></i>
+              {{ f.q }}
+            </h4>
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed pl-6">
+              {{ f.a }}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 12. OFFICIAL FOOTER (HELPUS ECOSYSTEM COMPLIANCE) -->
+    <footer class="bg-slate-950 border-t border-slate-800/90 py-12 text-slate-400 text-xs">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <!-- Main Footer Columns -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          
+          <!-- Col 1: Rodrigues Tur Identity -->
+          <div class="space-y-3">
+            <div class="flex items-center gap-2.5">
+              <img :src="profile.avatarImg" alt="Rodrigues Tur" class="w-9 h-9 rounded-full bg-white object-cover">
+              <span class="font-extrabold text-lg text-white">RODRIGUES <span class="text-cyan-400">TUR</span></span>
+            </div>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              {{ profile.tagline }}. Viagens aéreas e rodoviárias em grupo com saídas de João Pessoa e Campina Grande.
+            </p>
+            <p class="text-[11px] text-amber-400/90 font-medium">
+              {{ profile.cadastur }}
+            </p>
+          </div>
+
+          <!-- Col 2: Contacts & Coordinators -->
+          <div class="space-y-2">
+            <h4 class="text-sm font-bold text-white">Coordenação & Contato</h4>
+            <p class="text-xs font-semibold text-slate-300">{{ profile.coordinators }}</p>
+            <p class="flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+              <a :href="'https://wa.me/' + profile.phone1Raw" target="_blank" class="hover:text-amber-400">{{ profile.phone1 }}</a>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+              <a :href="'https://wa.me/' + profile.phone2Raw" target="_blank" class="hover:text-amber-400">{{ profile.phone2 }}</a>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fa-solid fa-envelope text-amber-400"></i>
+              <a :href="'mailto:' + profile.email1" class="hover:text-amber-400">{{ profile.email1 }}</a>
+            </p>
+          </div>
+
+          <!-- Col 3: Navigation & Admin -->
+          <div class="space-y-2">
+            <h4 class="text-sm font-bold text-white">Links Rápidos</h4>
+            <ul class="space-y-1.5 text-xs">
+              <li><a href="#roteiros" class="hover:text-amber-400 transition-colors">Próximos Roteiros</a></li>
+              <li><a href="assets/docs/Aparecida_Roteiro_RodriguesTur.pdf" download class="hover:text-amber-400 transition-colors flex items-center gap-1"><i class="fa-solid fa-file-pdf text-red-400"></i> PDF Aparecida 2026</a></li>
+              <li><a href="#simulador" class="hover:text-amber-400 transition-colors">Simulador de Viagem</a></li>
+              <li><a :href="profile.instagramUrl" target="_blank" class="hover:text-pink-400 transition-colors flex items-center gap-1"><i class="fa-brands fa-instagram"></i> @rodriguesturpb</a></li>
+              <li><a href="/admin.html" class="hover:text-slate-300 transition-colors text-slate-500">Painel do Administrador</a></li>
+            </ul>
+          </div>
+
+          <!-- Col 4: HelpUS Ecosystem Branding (User-requested standard) -->
+          <div class="space-y-3 bg-slate-900/60 border border-slate-800 rounded-xl p-4">
+            <div class="flex items-center gap-2">
+              <a href="https://helpusbr.com" target="_blank" class="group flex items-center gap-2">
+                <img :src="profile.helpusLogoImg" alt="HelpUS Logo" class="w-8 h-8 rounded-full object-cover group-hover:scale-105 transition-transform border border-amber-400/30">
+                <div class="flex items-center gap-1 font-extrabold text-sm tracking-tight">
+                  <span class="bg-amber-400 text-slate-950 px-1.5 py-0.5 rounded text-[10px] font-black">HELPUS</span>
+                  <span class="text-white text-xs">TECHNOLOGY</span>
+                </div>
+              </a>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-snug">
+              {{ t.footerDevNote }}
+            </p>
+            <div class="text-[11px] space-y-1 text-slate-400">
+              <p>Portal: <a href="https://helpusbr.com" target="_blank" class="text-sky-400 hover:underline">helpusbr.com</a></p>
+              <p>E-mail: <a href="mailto:helpus.ecommerce@gmail.com" class="text-amber-400 hover:underline">helpus.ecommerce@gmail.com</a></p>
+              <p>Instagram: <a href="https://www.instagram.com/helpus.ecommerce" target="_blank" class="text-pink-400 hover:underline">@helpus.ecommerce</a></p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Copyright & LGPD Controls -->
+        <div class="pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+          <div>
+            © 2026 Rodrigues Tur & HelpUS LLC. Todos os direitos reservados.
+          </div>
+          <div class="flex items-center gap-4">
+            <button @click="openCookieModal" class="hover:text-amber-400 transition-colors underline">
+              🍪 Preferências de Cookies
+            </button>
+            <a href="#" @click.prevent="openCookieModal" class="hover:text-slate-300 transition-colors">
+              Termos e Privacidade (LGPD)
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- MODAL 1: FULL DAY-BY-DAY ITINERARY VIEWER -->
+    <div 
+      v-if="activeItineraryModal && selectedTourForModal" 
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+      
+      <div class="bg-slate-900 border border-slate-700 rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+        
+        <!-- Modal Header -->
+        <div class="p-6 bg-slate-950 border-b border-slate-800 flex items-start justify-between gap-4">
+          <div>
+            <span class="text-xs font-bold text-cyan-400 uppercase tracking-wider block">Itinerário Completo & Oficial</span>
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-1">{{ selectedTourForModal.title }}</h3>
+            <p class="text-xs text-amber-400 font-semibold mt-0.5">
+              {{ selectedTourForModal.dates }} • {{ selectedTourForModal.duration }} • Saída: {{ selectedTourForModal.departure }}
+            </p>
+          </div>
+          <button 
+            @click="closeItineraryModal" 
+            class="w-9 h-9 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+
+        <!-- Modal Scrollable Content -->
+        <div class="p-6 overflow-y-auto space-y-6 text-sm text-slate-300">
+          
+          <!-- Highlights Included -->
+          <div class="bg-slate-950/70 border border-slate-800 rounded-2xl p-4 space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-2">
+              <i class="fa-solid fa-circle-check"></i>
+              <span>O Que Está Incluso Neste Pacote:</span>
+            </h4>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <li v-for="(item, i) in selectedTourForModal.highlights" :key="i" class="flex items-start gap-2">
+                <i class="fa-solid fa-check text-emerald-400 mt-0.5 flex-shrink-0"></i>
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Timeline Day by Day -->
+          <div class="space-y-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+              <i class="fa-solid fa-calendar-week"></i>
+              <span>Programação Dia a Dia:</span>
+            </h4>
+
+            <div class="space-y-4 border-l-2 border-amber-400/40 ml-2 pl-4">
+              <div 
+                v-for="(day, dIdx) in selectedTourForModal.itinerary" 
+                :key="dIdx" 
+                class="relative space-y-1">
+                <span class="absolute -left-[23px] top-1 w-3 h-3 rounded-full bg-amber-400 border-2 border-slate-900"></span>
+                <span class="text-xs font-extrabold text-amber-300">{{ day.day }}</span>
+                <h5 class="text-sm font-bold text-white">{{ day.title }}</h5>
+                <p class="text-xs text-slate-300 leading-relaxed">{{ day.desc }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Conditions and Rules -->
+          <div v-if="selectedTourForModal.rules" class="bg-slate-950/70 border border-slate-800 rounded-2xl p-4 space-y-2 text-xs">
+            <h4 class="font-bold text-slate-200 flex items-center gap-2">
+              <i class="fa-solid fa-triangle-exclamation text-amber-400"></i>
+              <span>Condições Importantes & Cancelamento:</span>
+            </h4>
+            <ul class="space-y-1 text-slate-400 list-disc list-inside">
+              <li v-for="(rule, rIdx) in selectedTourForModal.rules" :key="rIdx">
+                {{ rule }}
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Modal Footer Actions -->
+        <div class="p-4 sm:p-5 bg-slate-950 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <a 
+            v-if="selectedTourForModal.pdfUrl" 
+            :href="selectedTourForModal.pdfUrl" 
+            download
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs py-2.5 px-4 rounded-xl border border-slate-700 transition-colors">
+            <i class="fa-solid fa-file-pdf text-red-400 text-sm"></i>
+            <span>Baixar Roteiro Original (PDF)</span>
+          </a>
+
+          <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+            <button 
+              @click="closeItineraryModal" 
+              class="w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition-colors">
+              Fechar
+            </button>
+            <a 
+              :href="getDirectTourWhatsAppUrl(selectedTourForModal)" 
+              target="_blank"
+              class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold text-xs uppercase px-5 py-2.5 rounded-xl shadow-md transition-all">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Reservar pelo WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MODAL 2: INSTAGRAM STORIES VIEWER -->
+    <div 
+      v-if="activeStoryModal" 
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+      
+      <div class="relative w-full max-w-md bg-slate-950 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl flex flex-col">
+        
+        <!-- Story Top Bar (Progress & Profile) -->
+        <div class="p-4 bg-gradient-to-b from-black/80 to-transparent absolute top-0 inset-x-0 z-20 space-y-2">
+          
+          <!-- Segment Progress Bar -->
+          <div class="flex items-center gap-1.5 w-full">
+            <div 
+              v-for="(s, idx) in stories" 
+              :key="idx" 
+              class="h-1 flex-1 rounded-full bg-white/30 overflow-hidden">
+              <div 
+                class="h-full bg-white transition-all duration-300"
+                :class="idx <= currentStoryIndex ? 'w-full' : 'w-0'"></div>
+            </div>
+          </div>
+
+          <!-- Profile Info -->
+          <div class="flex items-center justify-between text-white text-xs">
+            <div class="flex items-center gap-2">
+              <img :src="profile.avatarImg" alt="Rodrigues Tur" class="w-8 h-8 rounded-full border border-pink-500 object-cover bg-white">
+              <div>
+                <span class="font-bold block leading-none">rodriguesturpb</span>
+                <span class="text-[10px] text-slate-300">{{ stories[currentStoryIndex].date }}</span>
+              </div>
+            </div>
+            <button @click="closeStoryModal" class="p-1 text-white hover:text-amber-400">
+              <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Story Image -->
+        <div class="h-[480px] sm:h-[520px] bg-black flex items-center justify-center relative overflow-hidden">
+          <img 
+            :src="stories[currentStoryIndex].thumb" 
+            :alt="stories[currentStoryIndex].title" 
+            class="w-full h-full object-cover">
+
+          <!-- Left/Right Click Nav Handlers -->
+          <div @click="prevStory" class="absolute left-0 top-0 bottom-0 w-1/3 cursor-pointer"></div>
+          <div @click="nextStory" class="absolute right-0 top-0 bottom-0 w-1/3 cursor-pointer"></div>
+        </div>
+
+        <!-- Story Description Footer -->
+        <div class="p-4 bg-slate-900 border-t border-slate-800 space-y-2">
+          <h4 class="text-sm font-bold text-white">{{ stories[currentStoryIndex].title }}</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">
+            {{ stories[currentStoryIndex].description }}
+          </p>
+          <div class="flex items-center justify-between pt-1">
+            <a 
+              :href="profile.instagramUrl" 
+              target="_blank" 
+              class="text-xs text-pink-400 hover:underline flex items-center gap-1">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Ver no Instagram Oficial</span>
+            </a>
+            <div class="flex items-center gap-2">
+              <button @click="prevStory" :disabled="currentStoryIndex === 0" class="px-2 py-1 bg-slate-800 disabled:opacity-30 rounded text-xs text-white">Anterior</button>
+              <button @click="nextStory" class="px-2 py-1 bg-amber-400 text-slate-950 font-bold rounded text-xs">Próximo</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- MODAL 3: LGPD COOKIE CONSENT BANNER & MODAL -->
+    <!-- Sticky Banner -->
+    <div 
+      v-if="showCookieBanner" 
+      class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 bg-slate-900 border border-slate-700/80 rounded-2xl p-4 shadow-2xl backdrop-blur-md animate-in slide-in-from-bottom-5">
+      <div class="flex items-start gap-3">
+        <div class="text-2xl flex-shrink-0">🍪</div>
+        <div class="space-y-2 flex-1">
+          <h4 class="text-xs font-bold text-white">{{ t.cookieTitle }}</h4>
+          <p class="text-[11px] text-slate-300 leading-relaxed">{{ t.cookieDesc }}</p>
+          <div class="flex items-center gap-2 pt-1">
+            <button 
+              @click="acceptCookies" 
+              class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-[11px] py-1.5 px-3 rounded-lg transition-colors">
+              {{ t.cookieAccept }}
+            </button>
+            <button 
+              @click="openCookieModal" 
+              class="text-[11px] text-slate-400 hover:text-white underline">
+              {{ t.cookieSettings }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Cookie Preferences Modal -->
+    <div 
+      v-if="cookieModalOpen" 
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+      <div class="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl">
+        <div class="flex items-center justify-between">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <span>🍪</span>
+            <span>Preferências de Privacidade & LGPD</span>
+          </h3>
+          <button @click="closeCookieModal" class="text-slate-400 hover:text-white">
+            <i class="fa-solid fa-xmark text-lg"></i>
+          </button>
+        </div>
+        <div class="space-y-3 text-xs text-slate-300 leading-relaxed">
+          <p>
+            O portal <strong>Rodrigues Tur</strong>, sob governança tecnológica da <strong>HelpUS LLC</strong>, preza pela transparência total e conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).
+          </p>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1">
+            <div class="flex items-center justify-between font-semibold text-white">
+              <span>Cookies Necessários e de Sessão</span>
+              <span class="text-emerald-400 text-[10px] uppercase">Sempre Ativos</span>
+            </div>
+            <p class="text-[11px] text-slate-400">Garantem o idioma escolhido, simulação de viagens e proteção de tráfego seguro.</p>
+          </div>
+        </div>
+        <div class="pt-2 flex items-center justify-end gap-2">
+          <button @click="acceptCookies" class="bg-amber-400 text-slate-950 font-bold px-4 py-2 rounded-xl text-xs">
+            Salvar e Confirmar
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13. FLOATING WHATSAPP BUTTON -->
+    <a 
+      :href="'https://wa.me/' + profile.phone1Raw + '?text=' + encodeURIComponent('Olá Elisa e Bruno da Rodrigues Tur! Visitei o site rodriguestour.helpusbr.com e gostaria de tirar dúvidas sobre as excursões.')" 
+      target="_blank"
+      class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-500 to-green-500 text-white flex items-center justify-center text-2xl shadow-xl shadow-green-500/30 hover:scale-110 transition-transform cursor-pointer"
+      title="Falar no WhatsApp com Elisa & Bruno">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
