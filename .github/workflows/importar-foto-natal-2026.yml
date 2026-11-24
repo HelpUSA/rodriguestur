@@ -1,0 +1,46 @@
+name: Importar foto de Natal 2026
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/importar-foto-natal-2026.yml'
+permissions:
+  contents: write
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Baixar e validar imagem original
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p assets/images
+          curl --fail --location --show-error --silent --retry 3 --connect-timeout 15 --max-time 90 \
+            --output assets/images/rodriguestur-natal-2026.png \
+            'https://i.ibb.co/Ldg5YtYK/C31950-C8-D82-E-490-E-8345-61-F464-FBE66-F.png'
+          python3 - <<'PY'
+          from pathlib import Path
+          image = Path('assets/images/rodriguestur-natal-2026.png').read_bytes()
+          if not image.startswith(b'\x89PNG\r\n\x1a\n') or len(image) < 10000:
+              raise SystemExit('Arquivo remoto nao e um PNG valido')
+          page = Path('index.html')
+          html = page.read_text(encoding='utf-8')
+          old = 'https://i.ibb.co/Ldg5YtYK/C31950-C8-D82-E-490-E-8345-61-F464-FBE66-F.png'
+          if old not in html:
+              raise SystemExit('URL original ausente da pagina inicial')
+          page.write_text(html.replace(old, 'assets/images/rodriguestur-natal-2026.png'), encoding='utf-8')
+          print('Imagem PNG validada:', len(image), 'bytes')
+          PY
+      - name: Salvar foto e pagina no repositorio
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/rodriguestur-natal-2026.png index.html
+          git commit -m "assets(home): store Christmas group photo locally" || exit 0
+          git push origin HEAD:master
