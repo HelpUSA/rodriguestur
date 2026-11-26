@@ -256,6 +256,35 @@
       </div>
     </section>
 
+    <!-- Galeria permanente: excursão de 20 a 26 de novembro de 2026 -->
+    <section id="galeria-novembro-2026" class="py-14 sm:py-20 bg-slate-950 border-y border-amber-400/20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center space-y-3 mb-9">
+          <span class="text-xs uppercase tracking-[0.18em] text-amber-400 font-bold">Memórias das nossas excursões</span>
+          <h2 class="text-2xl sm:text-4xl font-extrabold text-white">Galeria da Viagem • Novembro 2026</h2>
+          <p class="text-slate-300 text-sm sm:text-base max-w-3xl mx-auto">São Paulo, Aparecida, Canção Nova, Guaratinguetá e Campos do Jordão • 20 a 26 de novembro de 2026</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-3 mb-7" aria-label="Dias da excursão">
+          <a v-for="(day, index) in [{date:'20/11',label:'Sexta'},{date:'21/11',label:'Sábado'},{date:'22/11',label:'Domingo'},{date:'23/11',label:'Segunda'},{date:'24/11',label:'Terça'},{date:'25/11',label:'Quarta'},{date:'26/11',label:'Quinta'}]" :key="index" :href="'#galeria-dia-' + (index + 1)" class="rounded-xl border border-slate-700 bg-slate-900/90 hover:border-amber-400/70 px-3 py-3 text-center transition-colors">
+            <span class="block text-amber-300 text-lg font-bold">{{ day.date }}</span>
+            <span class="block text-slate-400 text-xs">{{ day.label }}</span>
+          </a>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <article v-for="(day, index) in [{date:'20/11/2026',title:'Embarque e chegada a São Paulo'},{date:'21/11/2026',title:'São Paulo e passeio cultural'},{date:'22/11/2026',title:'São Paulo e chegada a Aparecida'},{date:'23/11/2026',title:'Aparecida, Canção Nova e Frei Galvão'},{date:'24/11/2026',title:'Campos do Jordão'},{date:'25/11/2026',title:'Campos do Jordão'},{date:'26/11/2026',title:'Retorno a João Pessoa'}]" :key="index" :id="'galeria-dia-' + (index + 1)" class="scroll-mt-28 rounded-2xl bg-slate-900 border border-slate-800 p-5">
+            <p class="text-amber-400 font-extrabold text-sm mb-1">Dia {{ index + 1 }} • {{ day.date }}</p>
+            <h3 class="text-white font-semibold text-base">{{ day.title }}</h3>
+            <p class="text-slate-400 text-sm mt-2">Fotos deste dia serão adicionadas aqui após confirmação da data de captura.</p>
+          </article>
+        </div>
+        <div class="rounded-2xl border border-cyan-800/60 bg-slate-900 p-5 sm:p-6 mt-5">
+          <h3 class="font-bold text-white text-lg mb-2">Primeiros registros compartilhados</h3>
+          <p class="text-slate-300 text-sm mb-3">Há uma foto recebida para este álbum, ainda sem data de captura verificável. A incorporação da imagem à galeria está pendente de transferência do arquivo.</p>
+          <a href="https://photos.app.goo.gl/fUQHoQimGUbTbZtNA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">Abrir fotos compartilhadas no Google Fotos <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
     <!-- 4. INSTAGRAM STORIES CAROUSEL (@rodriguesturpb) -->
     <section id="stories" class="py-10 bg-slate-950/70 border-y border-slate-800/80 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
