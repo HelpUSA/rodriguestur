@@ -1,0 +1,73 @@
+name: Importar foto do Dia 7 via Google Fotos
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/importar-foto-dia7.yml'
+permissions:
+  contents: write
+jobs:
+  importar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Instalar Pillow
+        run: python3 -m pip install --user Pillow requests beautifulsoup4
+      - name: Baixar foto compartilhada e verificar a identidade visual
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import io, pathlib, re, sys
+          import requests
+          from bs4 import BeautifulSoup
+          from PIL import Image, ImageOps
+          link='https://photos.app.goo.gl/fUQHoQimGUbTbZtNA'
+          headers={'User-Agent':'Mozilla/5.0 (compatible; PhotoAlbumBot/1.0)'}
+          r=requests.get(link,headers=headers,timeout=30)
+          r.raise_for_status()
+          soup=BeautifulSoup(r.text,'html.parser')
+          urls=[]
+          for meta in soup.find_all('meta'):
+              if meta.get('property') in ('og:image','twitter:image') or meta.get('name')=='twitter:image':
+                  if meta.get('content'): urls.append(meta['content'])
+          urls += re.findall(r'https?://lh3\\.googleusercontent\\.com/[^"\\s<>]+',r.text)
+          urls=list(dict.fromkeys(urls))
+          if not urls: raise SystemExit('Nenhuma URL publica de imagem identificada; manter galeria sem foto')
+          expected=int('a2a2a6e8a1981c0c',16)
+          def dhash(im):
+              im=ImageOps.exif_transpose(im).convert('L').resize((9,8))
+              px=list(im.getdata())
+              return sum((1 << (63-(y*8+x))) for y in range(8) for x in range(8) if px[y*9+x]>px[y*9+x+1])
+          for u in urls[:30]:
+              try:
+                  u=u.replace('&amp;','&').replace('\\u003d','=')
+                  # Request full-resolution where supported
+                  u=re.sub(r'=w\\d+-h\\d+[^/?]*$', '=w1600', u)
+                  response=requests.get(u,headers=headers,timeout=20)
+                  response.raise_for_status()
+                  im=Image.open(io.BytesIO(response.content))
+                  dist=(dhash(im)^expected).bit_count()
+                  print('Candidate', im.size, 'hash distance', dist)
+                  if dist > 14: continue
+                  if im.width < 400: continue
+                  out=pathlib.Path('assets/images/viagens/2026-11-20-a-26/2026-11-26')
+                  out.mkdir(parents=True,exist_ok=True)
+                  im=ImageOps.exif_transpose(im).convert('RGB')
+                  im.thumbnail((1600,1600))
+                  im.save(out/'foto-001.jpg',quality=82,optimize=True)
+                  print('Foto validada e salva:',(out/'foto-001.jpg').stat().st_size)
+                  sys.exit(0)
+              except Exception as e:
+                  print('Candidate ignored:',str(e)[:130])
+          raise SystemExit('Fotos compartilhadas nao correspondem a imagem original enviada pelo usuario; nenhuma alteracao')
+          PY
+      - name: Confirmar arquivo no git
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/images/viagens/2026-11-20-a-26/2026-11-26/foto-001.jpg
+          git commit -m "assets(gallery): add verified Nov 26 first trip photo"
+          git push origin HEAD:master
