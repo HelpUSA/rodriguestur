@@ -274,14 +274,16 @@
           <article v-for="(day, index) in [{date:'20/11/2026',title:'Embarque e chegada a São Paulo'},{date:'21/11/2026',title:'São Paulo e passeio cultural'},{date:'22/11/2026',title:'São Paulo e chegada a Aparecida'},{date:'23/11/2026',title:'Aparecida, Canção Nova e Frei Galvão'},{date:'24/11/2026',title:'Campos do Jordão'},{date:'25/11/2026',title:'Campos do Jordão'},{date:'26/11/2026',title:'Retorno a João Pessoa'}]" :key="index" :id="'galeria-dia-' + (index + 1)" class="scroll-mt-28 rounded-2xl bg-slate-900 border border-slate-800 p-5">
             <p class="text-amber-400 font-extrabold text-sm mb-1">Dia {{ index + 1 }} • {{ day.date }}</p>
             <h3 class="text-white font-semibold text-base">{{ day.title }}</h3>
-            <p class="text-slate-400 text-sm mt-2">Fotos deste dia serão adicionadas aqui após confirmação da data de captura.</p>
+            <p v-if="index !== 6" class="text-slate-400 text-sm mt-2">As fotografias deste dia aparecerão aqui em miniaturas, assim que forem adicionadas.</p>
+            <div v-else class="mt-4">
+              <a href="assets/images/viagens/2026-11-20-a-26/2026-11-26/foto-001.jpg" target="_blank" rel="noopener noreferrer" class="block rounded-xl overflow-hidden bg-slate-950" aria-label="Ampliar foto de 26 de novembro">
+                <img src="assets/images/viagens/2026-11-20-a-26/2026-11-26/foto-001.jpg" alt="Foto da excursão no dia 26 de novembro: senhora na poltrona vermelha de Natal" loading="lazy" class="w-full aspect-[3/4] object-cover" @load="$event.target.parentElement.nextElementSibling.classList.add('hidden')" @error="$event.target.parentElement.classList.add('hidden')" />
+              </a>
+              <p class="text-slate-400 text-sm mt-2">A primeira foto de 26/11 está sendo importada para este álbum. Ela aparecerá aqui automaticamente quando a transferência for concluída.</p>
+            </div>
           </article>
         </div>
-        <div class="rounded-2xl border border-cyan-800/60 bg-slate-900 p-5 sm:p-6 mt-5">
-          <h3 class="font-bold text-white text-lg mb-2">Primeiros registros compartilhados</h3>
-          <p class="text-slate-300 text-sm mb-3">Primeiro registro enviado pelo organizador: 26/11/2026 (Dia 7 • retorno). A fotografia foi recebida na conversa e sua inclusão visual na galeria aguarda transferência do arquivo ao repositório.</p>
-          <a href="https://photos.app.goo.gl/fUQHoQimGUbTbZtNA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 underline underline-offset-4 hover:text-white">Abrir fotos compartilhadas no Google Fotos <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a>
-        </div>
+
       </div>
     </section>
 
