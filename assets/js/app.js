@@ -30,6 +30,56 @@ const app = createApp({
     const testimonials = ref(RODRIGUES_DATA.testimonials);
     const faqs = ref(RODRIGUES_DATA.faqs);
 
+    // Gallery State & Manifest (Novembro 2026)
+    const galleryDays = ref(typeof GALLERY_MANIFEST !== 'undefined' ? GALLERY_MANIFEST : []);
+    const activeGalleryDay = ref(null);
+    const lightboxPhoto = ref(null);
+    const lightboxIndex = ref(0);
+
+    const totalGalleryPhotos = computed(() => {
+      return galleryDays.value.reduce((acc, d) => acc + (d.total || 0), 0);
+    });
+
+    const openDayGallery = (day) => {
+      activeGalleryDay.value = day;
+    };
+
+    const closeDayGallery = () => {
+      activeGalleryDay.value = null;
+    };
+
+    const openLightbox = (day, photoIdx) => {
+      activeGalleryDay.value = day;
+      lightboxIndex.value = photoIdx;
+      lightboxPhoto.value = day.photos[photoIdx];
+    };
+
+    const closeLightbox = () => {
+      lightboxPhoto.value = null;
+    };
+
+    const nextLightboxPhoto = () => {
+      if (!activeGalleryDay.value || !activeGalleryDay.value.photos.length) return;
+      lightboxIndex.value = (lightboxIndex.value + 1) % activeGalleryDay.value.photos.length;
+      lightboxPhoto.value = activeGalleryDay.value.photos[lightboxIndex.value];
+    };
+
+    const prevLightboxPhoto = () => {
+      if (!activeGalleryDay.value || !activeGalleryDay.value.photos.length) return;
+      lightboxIndex.value = (lightboxIndex.value - 1 + activeGalleryDay.value.photos.length) % activeGalleryDay.value.photos.length;
+      lightboxPhoto.value = activeGalleryDay.value.photos[lightboxIndex.value];
+    };
+
+    const handleKeydown = (e) => {
+      if (lightboxPhoto.value) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') nextLightboxPhoto();
+        if (e.key === 'ArrowLeft') prevLightboxPhoto();
+      } else if (activeGalleryDay.value) {
+        if (e.key === 'Escape') closeDayGallery();
+      }
+    };
+
     // Ticker Logic
     const activeAnnouncementIdx = ref(0);
     let tickerInterval = null;
@@ -247,6 +297,7 @@ const app = createApp({
     onMounted(() => {
       loadCustomData();
       checkCookieConsent();
+      window.addEventListener('keydown', handleKeydown);
 
       // Start ticker
       tickerInterval = setInterval(() => {
@@ -256,6 +307,7 @@ const app = createApp({
 
     onUnmounted(() => {
       if (tickerInterval) clearInterval(tickerInterval);
+      window.removeEventListener('keydown', handleKeydown);
     });
 
     return {
@@ -275,6 +327,18 @@ const app = createApp({
       faqs,
       mobileMenuOpen,
       toggleMobileMenu,
+      // Gallery (Novembro 2026)
+      galleryDays,
+      activeGalleryDay,
+      lightboxPhoto,
+      lightboxIndex,
+      totalGalleryPhotos,
+      openDayGallery,
+      closeDayGallery,
+      openLightbox,
+      closeLightbox,
+      nextLightboxPhoto,
+      prevLightboxPhoto,
       // Itinerary Modal
       activeItineraryModal,
       selectedTourForModal,
