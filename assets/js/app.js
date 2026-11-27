@@ -198,20 +198,20 @@ const app = createApp({
       const roomLabel = simRoomType.value === 'double' ? 'Quarto Duplo' : (simRoomType.value === 'triple' ? 'Quarto Triplo' : 'Quarto Individual');
       const payLabel = simPaymentMethod.value === 'pix' ? 'À Vista no Pix (com desconto)' : 'Parcelado no Cartão em até 10x';
 
-      const msg = `Olá Elisa e Bruno da Rodrigues Tur! 👋✈️\n\n` +
+      const msg = `Olá Elisa da Rodrigues Tur! 👋✈️\n\n` +
         `Gostaria de fazer uma reserva/cotação para o pacote:\n` +
         `📌 *${tour.title}*\n` +
         `👥 *Viajantes:* ${simPassengers.value} pessoa(s)\n` +
         `🛏️ *Acomodação:* ${roomLabel}\n` +
         `💳 *Forma de Pagamento:* ${payLabel}\n` +
         `💰 *Valor Estimado:* ${calc.formattedTotal}\n\n` +
-        `Poderiam me passar mais informações sobre as vagas e o embarque na Paraíba? Vi o site rodriguestour.helpusbr.com!`;
+        `Poderia me passar mais informações sobre as vagas e o embarque na Paraíba? Vi o site rodriguestour.helpusbr.com!`;
 
       return `https://wa.me/${profile.value.phone1Raw}?text=${encodeURIComponent(msg)}`;
     };
 
     const getDirectTourWhatsAppUrl = (tour) => {
-      const msg = `Olá Elisa e Bruno da Rodrigues Tur! 👋✈️\n\n` +
+      const msg = `Olá Elisa da Rodrigues Tur! 👋✈️\n\n` +
         `Tenho interesse no pacote *${tour.title}* (${tour.dates}).\n` +
         `Gostaria de saber os detalhes de vagas, embarque e parcelamento!\n\n` +
         `Acessei pelo site rodriguestour.helpusbr.com.`;
@@ -234,7 +234,7 @@ const app = createApp({
         alert('Por favor, informe seu nome e telefone para contato.');
         return;
       }
-      const msg = `Olá Elisa e Bruno da Rodrigues Tur! 🌟\n\n` +
+      const msg = `Olá Elisa da Rodrigues Tur! 🌟\n\n` +
         `Gostaria de solicitar uma *Viagem Sob Medida / Excursão em Grupo*:\n` +
         `👤 *Nome:* ${f.name}\n` +
         `📞 *WhatsApp:* ${f.phone}\n` +

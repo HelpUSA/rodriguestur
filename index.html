@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rodrigues Tur | Excursões Aéreas e Rodoviárias em Grupo - João Pessoa & Campina Grande</title>
-  <meta name="description" content="Rodrigues Tur com Elisa & Bruno Rodrigues. Pacotes de turismo religioso, Aparecida do Norte, Canção Nova, Campos do Jordão, Gramado, Salvador e viagens em grupo com saídas da Paraíba.">
+  <meta name="description" content="Rodrigues Tur com Coordenação de Elisa Rodrigues. Pacotes de turismo religioso, Foz do Iguaçu, Trindade, Caldas Novas, Gramado, Salvador e viagens em grupo com saídas da Paraíba.">
   <meta name="keywords" content="Rodrigues Tur, turismo religioso Joao Pessoa, excursao Aparecida do Norte Paraiba, viagem Campos do Jordao, rodriguesturpb, turismo Campina Grande, excursao terceira idade">
 
   <!-- OpenGraph / Social Sharing -->
@@ -85,7 +85,7 @@
               </span>
             </div>
             <span class="text-[11px] text-slate-400 hidden sm:block tracking-wide">
-              Excursões & Viagens • Elisa & Bruno Rodrigues
+              Excursões & Viagens • Coordenação Elisa Rodrigues
             </span>
           </div>
         </a>
@@ -142,7 +142,7 @@
 
           <!-- WhatsApp Direct Action -->
           <a 
-            :href="'https://wa.me/' + profile.phone1Raw + '?text=' + encodeURIComponent('Olá Elisa e Bruno da Rodrigues Tur! Visitei o site rodriguestour.helpusbr.com e gostaria de mais informações.')"
+            :href="'https://wa.me/' + profile.phone1Raw + '?text=' + encodeURIComponent('Olá Elisa da Rodrigues Tur! Visitei o site rodriguestour.helpusbr.com e gostaria de mais informações.')"
             target="_blank"
             class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg shadow-md hover:shadow-green-500/20 transition-all transform hover:-translate-y-0.5">
             <i class="fa-brands fa-whatsapp text-base"></i>
@@ -226,7 +226,7 @@
           </div>
           <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg">
             <i class="fa-solid fa-user-shield text-amber-400"></i>
-            <span>Guias Elisa & Bruno</span>
+            <span>Guia Elisa Rodrigues</span>
           </div>
           <div class="flex items-center gap-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg">
             <i class="fa-solid fa-hotel text-emerald-400"></i>
@@ -873,7 +873,7 @@
           </div>
           <div>
             <label class="text-xs font-semibold text-slate-300 block mb-1">Seu WhatsApp com DDD:</label>
-            <input type="text" v-model="customForm.phone" required placeholder="Ex: (83) 98760-5812" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
+            <input type="text" v-model="customForm.phone" required placeholder="Ex: (83) 99872-1848" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-amber-400">
           </div>
           <div>
             <label class="text-xs font-semibold text-slate-300 block mb-1">Destino Desejado:</label>
@@ -956,7 +956,7 @@
               <i class="fa-brands fa-whatsapp text-emerald-400"></i>
               <a :href="'https://wa.me/' + profile.phone1Raw" target="_blank" class="hover:text-amber-400">{{ profile.phone1 }}</a>
             </p>
-            <p class="flex items-center gap-2">
+            <p v-if="profile.phone2" class="flex items-center gap-2">
               <i class="fa-brands fa-whatsapp text-emerald-400"></i>
               <a :href="'https://wa.me/' + profile.phone2Raw" target="_blank" class="hover:text-amber-400">{{ profile.phone2 }}</a>
             </p>
@@ -1392,10 +1392,10 @@
 
     <!-- 13. FLOATING WHATSAPP BUTTON -->
     <a 
-      :href="'https://wa.me/' + profile.phone1Raw + '?text=' + encodeURIComponent('Olá Elisa e Bruno da Rodrigues Tur! Visitei o site rodriguestour.helpusbr.com e gostaria de tirar dúvidas sobre as excursões.')" 
+      :href="'https://wa.me/' + profile.phone1Raw + '?text=' + encodeURIComponent('Olá Elisa da Rodrigues Tur! Visitei o site rodriguestour.helpusbr.com e gostaria de tirar dúvidas sobre as excursões.')" 
       target="_blank"
       class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-500 to-green-500 text-white flex items-center justify-center text-2xl shadow-xl shadow-green-500/30 hover:scale-110 transition-transform cursor-pointer"
-      title="Falar no WhatsApp com Elisa & Bruno">
+      title="Falar no WhatsApp com Elisa Rodrigues">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
 
