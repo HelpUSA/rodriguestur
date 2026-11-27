@@ -2,6 +2,7 @@
  * RODRIGUES TUR - Central Data & i18n Dictionary
  * Ecosystem: HelpUS Technology
  * Domain: rodriguestour.helpusbr.com
+ * Updated with official new 2027 itineraries from D:\AntiG\rodriguestur\docs
  */
 
 const RODRIGUES_DATA = {
@@ -14,8 +15,8 @@ const RODRIGUES_DATA = {
     phone1Raw: "5583987605812",
     phone2: "(83) 99659-5988",
     phone2Raw: "5583996595988",
-    email1: "elisareceita@hotmail.com",
-    email2: "akconsultorioas@gmail.com",
+    email1: "elisareceita2@gmail.com",
+    email2: "elisareceita@hotmail.com",
     instagram: "rodriguesturpb",
     instagramUrl: "https://www.instagram.com/rodriguesturpb/",
     originLocation: "João Pessoa & Campina Grande - Paraíba",
@@ -25,13 +26,29 @@ const RODRIGUES_DATA = {
   },
 
   announcements: [
-    "✨ Próxima Viagem Confirmada: Aparecida do Norte, Canção Nova & Campos do Jordão (20 a 26/Nov/2026) — Vagas Limitadas!",
-    "✈️ Embarques com Guia Acompanhante saindo de João Pessoa (Castro Pinto) e Campina Grande!",
+    "🌊 NOVO ROTEIRO 2027: Foz do Iguaçu, Paraguai (Ciudad del Este), Cataratas & Itaipu (04 a 08/Mar/2027) — Inscrições Abertas!",
+    "🙏 NOVO ROTEIRO 2027: Brasília, Goiânia, Festa do Divino Pai Eterno (Trindade) & Caldas Novas (21 a 25/Maio/2027) — Vagas Limitadas!",
+    "✨ ROTEIRO CONFIRMADO: Aparecida do Norte, Canção Nova & Campos do Jordão (20 a 26/Nov/2026) — Últimas Vagas!",
+    "✈️ Embarques com Guia Acompanhante Elisa & Bruno Rodrigues saindo de João Pessoa (Castro Pinto) e Campina Grande!",
     "💳 Parcele seu sonho de viagem em até 10x ou 12x no cartão com condições facilitadas!",
     "🙏 Mais de 10 anos realizando sonhos, turismo religioso, passeios culturais e viagens em família!"
   ],
 
   stories: [
+    {
+      id: "foz2027",
+      title: "Foz do Iguaçu",
+      thumb: "assets/images/dest-foz-iguacu.jpg",
+      date: "Mar 2027",
+      description: "Cataratas do Iguaçu (Brasil e Argentina), compras na Tríplice Fronteira do Paraguai, Parque das Aves e Usina de Itaipu."
+    },
+    {
+      id: "trindade2027",
+      title: "Trindade & Caldas",
+      thumb: "assets/images/dest-trindade.jpg",
+      date: "Maio 2027",
+      description: "Santuário do Divino Pai Eterno em Trindade com Santa Missa, Rodovia dos Romeiros, águas termais de Caldas Novas e Brasília cívica."
+    },
     {
       id: "aparecida",
       title: "Aparecida 2026",
@@ -55,24 +72,17 @@ const RODRIGUES_DATA = {
     },
     {
       id: "gramado2019",
-      title: "Gramado 2019",
+      title: "Gramado",
       thumb: "assets/images/story-gramado-2019.png",
-      date: "2019",
+      date: "Serra Gaúcha",
       description: "O encanto inesquecível da Serra Gaúcha, Lago Negro, Maria Fumaça e fábricas de chocolate artesanal."
     },
     {
       id: "curitiba2019",
-      title: "Curitiba 2019",
+      title: "Curitiba",
       thumb: "assets/images/story-curitiba-2019.png",
-      date: "2019",
+      date: "Trem da Serra",
       description: "Jardim Botânico de Curitiba, Ópera de Arame e a histórica descida de trem pela Serra do Mar até Morretes."
-    },
-    {
-      id: "sp2019",
-      title: "São Paulo 2019",
-      thumb: "assets/images/story-saopaulo-2019.png",
-      date: "2019",
-      description: "Passeios culturais na Av. Paulista, Catedral da Sé, Teatros e o polo de compras do Brás e 25 de Março."
     },
     {
       id: "destaques",
@@ -84,6 +94,135 @@ const RODRIGUES_DATA = {
   ],
 
   packages: [
+    {
+      id: "foz-iguacu-2027",
+      title: "Foz do Iguaçu, Paraguai & Cataratas (Brasil e Argentina)",
+      subtitle: "Maravilhas da Natureza, Compras Internacionais em Ciudad del Este, Parque das Aves e Itaipu",
+      featured: true,
+      category: "natureza",
+      categoryLabel: "Natureza & Compras no Paraguai",
+      status: "Confirmada • Março 2027",
+      dates: "04 a 08 de Março de 2027",
+      duration: "5 Dias / 4 Noites",
+      transport: "Aéreo + Traslados Inclusos",
+      departure: "João Pessoa (Aeroporto Castro Pinto)",
+      image: "assets/images/dest-foz-iguacu.jpg",
+      pdfUrl: "assets/docs/Foz_do_Iguacu_Roteiro_RodriguesTur_Marco_2027.pdf",
+      pricePix: 2980,
+      priceInstallments: 3290,
+      installmentsText: "10x de R$ 329,00 sem juros",
+      highlights: [
+        "Passagem aérea ida e volta de João Pessoa (Aeroporto Castro Pinto) para Foz do Iguaçu",
+        "Hospedagem selecionada com café da manhã incluso",
+        "Traslados completos de chegada e saída do aeroporto ao hotel",
+        "Dia livre de compras em Ciudad del Este (Paraguai), polo comercial com mais de 2.600 lojas",
+        "Travessia da emblemática Ponte Internacional da Amizade na Tríplice Fronteira",
+        "Visita completa às Cataratas Brasileiras (Parque Nacional do Iguaçu)",
+        "Visita às Cataratas Argentinas com passeio de trem panorâmico até a majestosa Garganta do Diabo",
+        "Passeio imersivo no Parque das Aves, maior parque de preservação de aves da América Latina",
+        "Visita técnica à grandiosa Usina Hidrelétrica de Itaipu com filme explicativo e mirante do vertedouro",
+        "Acompanhamento presencial dedicado de Elisa Rodrigues (Rodrigues Tur)"
+      ],
+      itinerary: [
+        {
+          day: "Dia 1 • 04/03/2027 (Quinta-feira)",
+          title: "João Pessoa ✈️ Foz do Iguaçu & Check-in",
+          desc: "Comparecimento ao Aeroporto Castro Pinto (JPA) em horário a combinar para embarque com destino a Foz do Iguaçu. Recepção em Foz do Iguaçu e traslado ao hotel. Entrada nos apartamentos de acordo com a disponibilidade do hotel e descanso para o início das atividades."
+        },
+        {
+          day: "Dia 2 • 05/03/2027 (Sexta-feira)",
+          title: "Dia Livre para Compras no Paraguai (Ciudad del Este)",
+          desc: "Dia todo livre para atividades independentes e compras na segunda cidade mais importante do Paraguai, Ciudad del Este, que forma a tríplice fronteira entre Brasil, Paraguai e Argentina. Cidades ligadas pela Ponte Internacional da Amizade. Grande atividade comercial com média de 2.600 lojas com eletrônicos, perfumes, bolsas, tênis, informática e artigos importados com excelentes preços."
+        },
+        {
+          day: "Dia 3 • 06/03/2027 (Sábado)",
+          title: "Cataratas Brasileiras & Cataratas Argentinas (Garganta do Diabo)",
+          desc: "Dia inteiro dedicado a contemplar uma das 7 Maravilhas da Natureza. Lado Brasileiro: 275 saltos por onde escoam cerca de um trilhão de litros de água por segundo com vistas panorâmicas colossais. Lado Argentino: contato direto com a natureza por trilhas superiores e inferiores, além do inesquecível passeio de trem do Centro de Visitantes até a espetacular Garganta do Diabo."
+        },
+        {
+          day: "Dia 4 • 07/03/2027 (Domingo)",
+          title: "Parque das Aves & Usina Hidrelétrica de Itaipu",
+          desc: "Pela manhã, visita ao Parque das Aves: caminhada de 1 a 2 horas em mata nativa com viveiros de imersão de aves tropicais do mundo todo, répteis e borboletário. À tarde, visita à imponente Usina Hidrelétrica de Itaipu: recepção com filme explicativo sobre a colossal obra e visita ao mirante principal para contemplar o vertedouro."
+        },
+        {
+          day: "Dia 5 • 08/03/2027 (Segunda-feira)",
+          title: "Foz do Iguaçu ✈️ João Pessoa (Retorno)",
+          desc: "Após o café da manhã, em horário a combinar, traslado ao aeroporto para embarque em nosso voo de retorno a João Pessoa, levando memórias inesquecíveis, compras e novos amigos."
+        }
+      ],
+      rules: [
+        "Por motivo de força maior, a ordem do programa poderá ser invertida ou alterada;",
+        "CANCELAMENTO: Até 30 dias da saída multa de 10%, até 07 dias antes 50%;",
+        "Preços e condições sujeitos à alteração, desde que não pagos;",
+        "Acomodação nos apartamentos de acordo com a disponibilidade do hotel;",
+        "Nossos preços não incluem extras de caráter pessoal, assim como passeios opcionais;",
+        "A excursão sairá com um mínimo de 15 pessoas;",
+        "Preço inclui aéreo, hotel, traslado de chegada e saída, cataratas brasileiras, cataratas argentinas e Itaipu;",
+        "Torna-se obrigatória a apresentação da Carteira de Identidade (RG original com no máximo 10 anos de expedição) ou Certidão de Nascimento na aquisição e no embarque."
+      ]
+    },
+
+    {
+      id: "brasilia-trindade-caldas-2027",
+      title: "Brasília, Goiânia, Trindade & Caldas Novas",
+      subtitle: "Festa e Fé no Santuário do Divino Pai Eterno, Águas Termais e Circuito Cívico",
+      featured: true,
+      category: "religioso",
+      categoryLabel: "Turismo Religioso & Termas",
+      status: "Confirmada • Maio 2027",
+      dates: "21 a 25 de Maio de 2027",
+      duration: "5 Dias / 4 Noites",
+      transport: "Aéreo + Ônibus Executivo Climatizado",
+      departure: "João Pessoa (Aeroporto Castro Pinto)",
+      image: "assets/images/dest-trindade.jpg",
+      pdfUrl: "assets/docs/Brasilia_Trindade_CaldasNovas_RodriguesTur_Maio_2027.pdf",
+      pricePix: 2450,
+      priceInstallments: 2690,
+      installmentsText: "10x de R$ 269,00 sem juros",
+      highlights: [
+        "Passagem aérea ida e volta de João Pessoa (Aeroporto Castro Pinto) para Brasília",
+        "Transporte em ônibus executivo climatizado durante todo o roteiro interestadual",
+        "Hospedagem confortável com café da manhã incluso",
+        "Visita ao Santuário Basílica do DIVINO PAI ETERNO em Trindade com participação na Santa Missa",
+        "Passagem pela Rodovia dos Romeiros com os 18km de painéis da Via Sacra",
+        "Passeio pelos principais pontos turísticos de Goiânia com parada especial para compras de confecções",
+        "Dia especial em Caldas Novas, a maior estância hidrotermal do mundo, com suas famosas águas quentes curativas",
+        "Visita ao Jardim Japonês, Shopping Serra Verde, Cachaçaria Vale das Águas Quentes e degustação de doces artesanais típicos",
+        "City tour completo pelos monumentos e igrejas históricas de Brasília",
+        "Acompanhamento atencioso e familiar de Elisa Rodrigues (Rodrigues Tur)"
+      ],
+      itinerary: [
+        {
+          day: "Dia 1 • 21/05/2027 (Sexta-feira)",
+          title: "João Pessoa ✈️ Brasília & Tour Cívico",
+          desc: "Comparecimento ao Aeroporto Castro Pinto com 2 horas de antecedência do voo com destino a Brasília. Chegada na capital federal e início do tour panorâmico com visita às famosas igrejas (Catedral Metropolitana, Dom Bosco) e principais pontos turísticos e cívicos."
+        },
+        {
+          day: "Dias 2 e 3 • 22 e 23/05/2027 (Sábado e Domingo)",
+          title: "Brasília ➔ Goiânia & Santuário do Divino Pai Eterno (Trindade)",
+          desc: "Após o café da manhã, viagem com destino a Goiânia e acomodação no hotel. Passeio turístico por Goiânia com parada para compras. Seguiremos pela Rodovia dos Romeiros (18 km ornamentados com painéis da Via Sacra e a Paixão de Cristo) até Trindade, capital da fé fundada em 1840. Participação nas celebrações e Santa Missa no Santuário Basílica do Divino Pai Eterno."
+        },
+        {
+          day: "Dia 4 • 24/05/2027 (Segunda-feira)",
+          title: "Goiânia ➔ Caldas Novas (Águas Termais & Tradições)",
+          desc: "Saída às 08:00h para Caldas Novas, maior estância hidrotermal do mundo com suas piscinas de águas quentes naturais. Visita aos principais pontos: Jardim Japonês com paisagismo oriental e casa de fazenda tradicional, Shopping Serra Verde, varejo de doces artesanais para degustação e Cachaçaria Vale das Águas Quentes. Após o jantar, retorno para hotel."
+        },
+        {
+          day: "Dia 5 • 25/05/2027 (Terça-feira)",
+          title: "Goiânia / Brasília ✈️ João Pessoa (Retorno)",
+          desc: "Após o café da manhã, check-out do hotel e últimas visitas aos pontos turísticos de Brasília. Em seguida, traslado ao aeroporto para embarque no voo de retorno a João Pessoa com o coração cheio de graças e renovação espiritual."
+        }
+      ],
+      rules: [
+        "Por motivo de força maior, a ordem do programa poderá ser invertida ou alterada;",
+        "CANCELAMENTO: Até 30 dias da saída multa de 20%, até 07 dias antes 50%;",
+        "Preços e condições sujeitos à alteração, desde que não pagos;",
+        "Nossos preços não incluem extras de caráter pessoal, assim como passeios opcionais;",
+        "A excursão sairá com um mínimo de 15 pessoas;",
+        "No embarque é obrigatório apresentar Carteira de Identidade original ou Certidão de Nascimento."
+      ]
+    },
+
     {
       id: "aparecida-jordao-2026",
       title: "Aparecida do Norte, Canção Nova & Campos do Jordão",
@@ -164,11 +303,11 @@ const RODRIGUES_DATA = {
       id: "salvador-bahia-2026",
       title: "Salvador / Bahia Histórico & Litoral dos Encantos",
       subtitle: "A Magia do Pelourinho, Farol da Barra e o Pôr do Sol Baiano",
-      featured: true,
+      featured: false,
       category: "praia",
       categoryLabel: "Litoral & Cultura",
       status: "Confirmada",
-      dates: "Saídas Mensais • Consulte Próxima Turma",
+      dates: "Saídas Programadas • Consulte Próxima Turma",
       duration: "5 Dias / 4 Noites",
       transport: "Aéreo Ida e Volta + Traslados",
       departure: "Campina Grande / João Pessoa",
@@ -225,7 +364,7 @@ const RODRIGUES_DATA = {
       id: "gramado-serra-gaucha",
       title: "Gramado, Canela & Bento Gonçalves",
       subtitle: "O Encanto Europeu da Serra Gaúcha e Natal Luz",
-      featured: true,
+      featured: false,
       category: "serra",
       categoryLabel: "Serras & Gastronomia",
       status: "Alta Temporada • Vagas Reduzidas",
@@ -394,69 +533,6 @@ const RODRIGUES_DATA = {
         "Acompanhamento com dicas de segurança e lojas parceiras;",
         "Possibilidade de contratação de mala despachada adicional de 23kg."
       ]
-    },
-
-    {
-      id: "brasilia-caldasnovas",
-      title: "Brasília Cívica & Águas Quentes de Caldas Novas",
-      subtitle: "Arquitetura Monumental da Capital e Relaxamento Termal",
-      featured: false,
-      category: "cultural",
-      categoryLabel: "Cívico & Termas",
-      status: "Confirmada",
-      dates: "Saídas 2026/2027",
-      duration: "6 Dias / 5 Noites",
-      transport: "Aéreo + Ônibus Executivo Climatizado",
-      departure: "João Pessoa (JPA)",
-      image: "assets/images/post-brasilia-grupo.png",
-      pdfUrl: null,
-      pricePix: 2350,
-      priceInstallments: 2580,
-      installmentsText: "10x de R$ 258,00 sem juros",
-      highlights: [
-        "Aéreo ida e volta de João Pessoa para Brasília",
-        "City tour cívico: Esplanada dos Ministérios, Congresso, Catedral e Memorial JK",
-        "Passeio de barco pelo Lago Paranoá com vista para a Ponte JK",
-        "Hospedagem em Caldas Novas com acesso livre aos parques de águas termais quentes",
-        "Visita à Feira da Estação em Goiânia com compras a preços de fábrica",
-        "Equipe Rodrigues Tur acompanhando cada instante"
-      ],
-      itinerary: [
-        {
-          day: "Dia 1",
-          title: "Chegada em Brasília & City Tour Noturno",
-          desc: "Recepção no aeroporto JK e transfer para o hotel. À noite, tour pelos monumentos iluminados da capital federal."
-        },
-        {
-          day: "Dia 2",
-          title: "Circuito Monumental de Brasília",
-          desc: "Visita interna ao Congresso Nacional, Santuário Dom Bosco com seus vitrais azuis impressionantes e Catedral Metropolitana."
-        },
-        {
-          day: "Dia 3",
-          title: "Viagem para Caldas Novas (GO)",
-          desc: "Transfer em ônibus executivo para a capital mundial das águas quentes. Acomodação em resort com parque aquático aquecido."
-        },
-        {
-          day: "Dia 4",
-          title: "Dia de Relaxamento nas Termas",
-          desc: "Dia livre para banhos terapêuticos nas piscinas naturais quentes e lazer em família."
-        },
-        {
-          day: "Dia 5",
-          title: "Feira da Estação em Goiânia",
-          desc: "Passeio até Goiânia para visitar a famosa feira de confecções e artesanato local."
-        },
-        {
-          day: "Dia 6",
-          title: "Retorno para a Paraíba",
-          desc: "Traslado ao aeroporto de Brasília/Goiânia e voo de retorno com muita história para contar."
-        }
-      ],
-      rules: [
-        "Incluso acesso às piscinas termais dos hotéis parceiros;",
-        "Excursão com camisa comemorativa oficial inclusa para cada passageiro."
-      ]
     }
   ],
 
@@ -485,7 +561,7 @@ const RODRIGUES_DATA = {
     {
       name: "Francisca das Chagas",
       city: "Guarabira - PB",
-      tour: "Brasília & Caldas Novas",
+      tour: "Brasília, Trindade & Caldas Novas",
       rating: 5,
       comment: "Foi um sonho realizado. Nós ganhamos camisa personalizada, fiz muitos amigos no grupo e a Elisa resolve tudo com uma calma e atenção que dá muita segurança para quem viaja sozinho."
     }
@@ -505,8 +581,8 @@ const RODRIGUES_DATA = {
       a: "Facilitamos sua viagem com desconto especial para pagamento à vista via Pix ou transferência bancária, além de parcelamento em até 10x ou 12x no cartão de crédito. O contrato e recibos são enviados diretamente por e-mail e WhatsApp."
     },
     {
-      q: "O que está incluso no pacote de Aparecida do Norte e Campos do Jordão?",
-      a: "Está incluso: Passagem aérea de ida e volta, acomodação no Hotel São Paulo Inn com café da manhã e jantar de boas-vindas, hospedagem no Marge Hotel em Aparecida com café da manhã, transporte em ônibus executivo climatizado entre as cidades, visitas guiadas com missas em Padre Marcelo Rossi e Basílica Nova de Aparecida, passeios em Canção Nova, Frei Galvão e os principais pontos turísticos de Campos do Jordão."
+      q: "O que está incluso nos novos pacotes de Foz do Iguaçu e Trindade/Caldas Novas 2027?",
+      a: "Em Foz do Iguaçu (04 a 08/Março/2027), estão inclusos: aéreo ida e volta, hotel com café da manhã, traslados, Cataratas Brasileiras, Cataratas Argentinas (com trem até Garganta do Diabo), compras no Paraguai em Ciudad del Este, Parque das Aves e Usina de Itaipu. Em Brasília, Trindade e Caldas Novas (21 a 25/Maio/2027), inclui: aéreo, ônibus executivo climatizado, hotel com café, celebrações e Santa Missa no Santuário do Divino Pai Eterno em Trindade, tour cívico em Brasília e dia relaxante nas águas termais de Caldas Novas."
     },
     {
       q: "Pessoas sozinhas ou da terceira idade podem participar com segurança?",
@@ -514,7 +590,7 @@ const RODRIGUES_DATA = {
     },
     {
       q: "Quais documentos são exigidos para o embarque?",
-      a: "É obrigatória a apresentação do documento de identificação original com foto em perfeito estado (RG emitido há menos de 10 anos ou CNH válida) ou Certidão de Nascimento original para crianças de até 11 anos acompanhadas dos responsáveis legais."
+      a: "É obrigatória a apresentação do documento de identificação original com foto em perfeito estado (RG emitido há menos de 10 anos ou CNH válida) ou Certidão de Nascimento original para crianças de até 11 anos acompanhadas dos responsáveis legais. Para viagens com passagem por fronteira (como Foz do Iguaçu / Paraguai e Argentina), o RG com no máximo 10 anos de expedição é estritamente obrigatório."
     }
   ],
 
@@ -535,12 +611,13 @@ const RODRIGUES_DATA = {
       heroBadge: "✨ Turismo de Fé, Lazer & Família desde a Paraíba",
       heroHeadline: "Viaje com Segurança, Conforto e a Alegria de Estar em Família",
       heroSub: "Excursões aéreas e rodoviárias em grupo saindo de João Pessoa e Campina Grande com acompanhamento integral de Elisa e Bruno Rodrigues.",
-      searchPlaceholder: "Para onde você quer viajar? (Ex: Aparecida, Gramado, Salvador...)",
+      searchPlaceholder: "Para onde você quer viajar? (Ex: Foz do Iguaçu, Trindade, Caldas Novas, Aparecida...)",
       categoryAll: "Todos os Destinos",
+      categoryNatureza: "Natureza & Cataratas",
       categoryReligioso: "Turismo Religioso",
       categorySerra: "Serras & Frio",
       categoryPraia: "Praias & Litoral",
-      categoryCompras: "Compras & Metrópoles",
+      categoryCompras: "Compras & Fronteira",
       categoryCultural: "Cultural & Cívico",
       featuredBadge: "Roteiro em Destaque",
       departureLabel: "Embarque:",
@@ -601,12 +678,13 @@ const RODRIGUES_DATA = {
       heroBadge: "✨ Faith, Leisure & Family Tourism from Paraíba",
       heroHeadline: "Travel with Safety, Comfort and the Joy of Family Care",
       heroSub: "Guided air and executive bus group tours departing from João Pessoa and Campina Grande with Elisa & Bruno Rodrigues.",
-      searchPlaceholder: "Where would you like to travel? (e.g. Aparecida, Gramado, Salvador...)",
+      searchPlaceholder: "Where would you like to travel? (e.g. Iguazu Falls, Trindade, Caldas Novas, Aparecida...)",
       categoryAll: "All Destinations",
+      categoryNatureza: "Nature & Waterfalls",
       categoryReligioso: "Religious Tourism",
       categorySerra: "Mountains & Scenic",
       categoryPraia: "Beaches & Coast",
-      categoryCompras: "Shopping & Cities",
+      categoryCompras: "Shopping & Border",
       categoryCultural: "Cultural & Heritage",
       featuredBadge: "Featured Tour",
       departureLabel: "Departure:",
@@ -667,12 +745,13 @@ const RODRIGUES_DATA = {
       heroBadge: "✨ Turismo de Fe, Placer y Familia desde Paraíba",
       heroHeadline: "Viaje con Seguridad, Confort y la Alegría de Sentirse en Familia",
       heroSub: "Excursiones aéreas y en autobús ejecutivo en grupo saliendo de João Pessoa y Campina Grande con Elisa y Bruno Rodrigues.",
-      searchPlaceholder: "¿A dónde desea viajar? (Ej: Aparecida, Gramado, Salvador...)",
+      searchPlaceholder: "¿A dónde desea viajar? (Ej: Foz do Iguazú, Trindade, Caldas Novas, Aparecida...)",
       categoryAll: "Todos los Destinos",
+      categoryNatureza: "Naturaleza y Cataratas",
       categoryReligioso: "Turismo Religioso",
       categorySerra: "Sierras y Montañas",
       categoryPraia: "Playas y Costa",
-      categoryCompras: "Compras y Metrópolis",
+      categoryCompras: "Compras y Frontera",
       categoryCultural: "Cultural y Cívico",
       featuredBadge: "Paquete Destacado",
       departureLabel: "Salida:",
