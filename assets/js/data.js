@@ -28,7 +28,7 @@ const RODRIGUES_DATA = {
   announcements: [
     "🌊 NOVO ROTEIRO 2027: Foz do Iguaçu, Paraguai (Ciudad del Este), Cataratas & Itaipu (04 a 08/Mar/2027) — Inscrições Abertas!",
     "🙏 NOVO ROTEIRO 2027: Brasília, Goiânia, Festa do Divino Pai Eterno (Trindade) & Caldas Novas (21 a 25/Maio/2027) — Vagas Limitadas!",
-    "✨ ROTEIRO CONFIRMADO: Aparecida do Norte, Canção Nova & Campos do Jordão (20 a 26/Nov/2026) — Últimas Vagas!",
+    "🎉 EXCURSÃO REALIZADA COM SUCESSO: Confira as fotos da viagem a Aparecida, Canção Nova e Campos do Jordão na Galeria Oficial!",
     "✈️ Embarques com Guia Acompanhante Elisa & Bruno Rodrigues saindo de João Pessoa (Castro Pinto) e Campina Grande!",
     "💳 Parcele seu sonho de viagem em até 10x ou 12x no cartão com condições facilitadas!",
     "🙏 Mais de 10 anos realizando sonhos, turismo religioso, passeios culturais e viagens em família!"
@@ -220,82 +220,6 @@ const RODRIGUES_DATA = {
         "Nossos preços não incluem extras de caráter pessoal, assim como passeios opcionais;",
         "A excursão sairá com um mínimo de 15 pessoas;",
         "No embarque é obrigatório apresentar Carteira de Identidade original ou Certidão de Nascimento."
-      ]
-    },
-
-    {
-      id: "aparecida-jordao-2026",
-      title: "Aparecida do Norte, Canção Nova & Campos do Jordão",
-      subtitle: "Roteiro de Fé, Emoção e Charme Serrano",
-      featured: true,
-      category: "religioso",
-      categoryLabel: "Turismo Religioso & Serra",
-      status: "Confirmada • Vagas Limitadas",
-      dates: "20 a 26 de Novembro de 2026",
-      duration: "7 Dias / 6 Noites",
-      transport: "Aéreo + Ônibus Executivo Luxo",
-      departure: "João Pessoa (Aeroporto Castro Pinto)",
-      image: "assets/images/dest-aparecida.jpg",
-      pdfUrl: "assets/docs/Aparecida_Roteiro_RodriguesTur.pdf",
-      pricePix: 2690,
-      priceInstallments: 2890,
-      installmentsText: "10x de R$ 289,00 sem juros",
-      highlights: [
-        "Aéreo ida e volta de João Pessoa (Aeroporto Castro Pinto) para São Paulo",
-        "Acomodação no Hotel São Paulo Inn com café da manhã e jantar de boas-vindas",
-        "Recepção e hospedagem no Marge Hotel em Aparecida do Norte",
-        "Missa com Padre Marcelo Rossi no Santuário Mãe de Deus em SP",
-        "Visita ao Rio Paraíba onde foi encontrada a imagem de Nossa Senhora Aparecida",
-        "Santuário Nacional de Aparecida: Missa na Basílica Nova, Museu da Torre, Bondinho e Passarela da Fé",
-        "Comunidade Canção Nova e visita ao Santuário de Santo Antônio de Sant'Ana Galvão (Frei Galvão)",
-        "2 Dias inteiros em Campos do Jordão: Palácio da Boa Vista, Duchas da Prata e Pico de Itapeva",
-        "Acompanhamento presencial integral de Elisa Rodrigues e Bruno Rodrigues"
-      ],
-      itinerary: [
-        {
-          day: "Dia 1 • 20/11/2026 (Sexta-feira)",
-          title: "Embarque João Pessoa ✈️ São Paulo & Chegada",
-          desc: "Comparecimento ao Aeroporto Castro Pinto (JPA) em horário a combinar para embarque com destino a São Paulo. Chegada e acomodação de imediato no Hotel São Paulo Inn com café da manhã. Restante do dia livre para compras e atividades independentes. Jantar incluso de boas-vindas."
-        },
-        {
-          day: "Dia 2 • 21/11/2026 (Sábado)",
-          title: "Manhã de Compras & City Tour Cultural na Maior Metrópole",
-          desc: "Pela manhã, horário livre para o comércio (25 de Março / Brás). Às 15:00h, saída com ônibus executivo para passeio panorâmico guiado pelos principais pontos turísticos de São Paulo: Avenida Paulista, Catedral da Sé, Teatro Municipal e Centro Histórico."
-        },
-        {
-          day: "Dia 3 • 22/11/2026 (Domingo)",
-          title: "Missa Padre Marcelo Rossi & Viagem a Aparecida do Norte",
-          desc: "Saída para a celebração da missa de Padre Marcelo Rossi no Santuário Mãe de Deus. Logo em seguida, retorno para o hotel para café da manhã. Após o checkout, saída em direção à cidade de Aparecida do Norte. Conheceremos o histórico Rio Paraíba do Sul, onde foi encontrada a imagem de Nossa Senhora. À tarde, recepção e acomodação no Marge Hotel."
-        },
-        {
-          day: "Dia 4 • 23/11/2026 (Segunda-feira)",
-          title: "Santuário Nacional de Aparecida, Canção Nova & Frei Galvão",
-          desc: "Após café da manhã, saída para o Santuário Nacional de Nossa Senhora Aparecida para assistir à missa solene às 09:00h na Basílica Nova. Dia livre no complexo: Museu da Torre da Basílica, Morro do Presépio, Passarela da Fé, Sala dos Milagres e Bondinho panorâmico. À tarde, visita à maior Comunidade Católica do Brasil — Canção Nova (Cachoeira Paulista) e ao Santuário do primeiro santo brasileiro, Frei Galvão, em Guaratinguetá."
-        },
-        {
-          day: "Dia 5 • 24/11/2026 (Terça-feira)",
-          title: "Subida da Serra com Destino a Campos do Jordão",
-          desc: "Após o checkout em Aparecida, viagem com destino a Campos do Jordão, considerada a cidade mais charmosa do Brasil. Dia inteiro dedicado a visitas aos principais pontos turísticos: Palácio da Boa Vista, Duchas da Prata e Pico de Itapeva, com vista deslumbrante do Vale do Paraíba."
-        },
-        {
-          day: "Dia 6 • 25/11/2026 (Quarta-feira)",
-          title: "Campos do Jordão Livre: Malhas, Chocolates & Gastronomia",
-          desc: "Após o café da manhã, dia inteiro livre para desfrutar da arquitetura suíça da Vila Capivari, saborear o fondue e os chocolates artesanais tradicionais, fazer compras nas feiras de malhas e curtir os encantos da montanha."
-        },
-        {
-          day: "Dia 7 • 26/11/2026 (Quinta-feira)",
-          title: "Campos do Jordão ➔ Aeroporto Guarulhos ✈️ João Pessoa",
-          desc: "Após o café da manhã, checkout do hotel e viagem em ônibus executivo com destino ao Aeroporto Internacional de Guarulhos (SP) para embarque de retorno a João Pessoa, com corações cheios de fé, memórias inesquecíveis e novas amizades."
-        }
-      ],
-      rules: [
-        "Por motivo de força maior, a ordem do programa poderá ser invertida ou alterada;",
-        "CANCELAMENTO: Até 30 dias da saída multa de 10%, até 07 dias antes 50%;",
-        "Preços e condições sujeitos a alteração, desde que não pagos;",
-        "Acomodação nos apartamentos de acordo com a disponibilidade do hotel;",
-        "Nossos preços não incluem extras de caráter pessoal, assim como passeios opcionais;",
-        "A excursão sairá com um mínimo de 25 pessoas;",
-        "Torna-se obrigatória a apresentação da Carteira de Identidade ou Certidão de Nascimento (originais) na aquisição do pacote e no embarque."
       ]
     },
 
@@ -611,7 +535,7 @@ const RODRIGUES_DATA = {
       heroBadge: "✨ Turismo de Fé, Lazer & Família desde a Paraíba",
       heroHeadline: "Viaje com Segurança, Conforto e a Alegria de Estar em Família",
       heroSub: "Excursões aéreas e rodoviárias em grupo saindo de João Pessoa e Campina Grande com acompanhamento integral de Elisa e Bruno Rodrigues.",
-      searchPlaceholder: "Para onde você quer viajar? (Ex: Foz do Iguaçu, Trindade, Caldas Novas, Aparecida...)",
+      searchPlaceholder: "Para onde você quer viajar? (Ex: Foz do Iguaçu, Trindade, Caldas Novas, Salvador...)",
       categoryAll: "Todos os Destinos",
       categoryNatureza: "Natureza & Cataratas",
       categoryReligioso: "Turismo Religioso",
@@ -678,7 +602,7 @@ const RODRIGUES_DATA = {
       heroBadge: "✨ Faith, Leisure & Family Tourism from Paraíba",
       heroHeadline: "Travel with Safety, Comfort and the Joy of Family Care",
       heroSub: "Guided air and executive bus group tours departing from João Pessoa and Campina Grande with Elisa & Bruno Rodrigues.",
-      searchPlaceholder: "Where would you like to travel? (e.g. Iguazu Falls, Trindade, Caldas Novas, Aparecida...)",
+      searchPlaceholder: "Where would you like to travel? (e.g. Iguazu Falls, Trindade, Caldas Novas, Salvador...)",
       categoryAll: "All Destinations",
       categoryNatureza: "Nature & Waterfalls",
       categoryReligioso: "Religious Tourism",
@@ -745,7 +669,7 @@ const RODRIGUES_DATA = {
       heroBadge: "✨ Turismo de Fe, Placer y Familia desde Paraíba",
       heroHeadline: "Viaje con Seguridad, Confort y la Alegría de Sentirse en Familia",
       heroSub: "Excursiones aéreas y en autobús ejecutivo en grupo saliendo de João Pessoa y Campina Grande con Elisa y Bruno Rodrigues.",
-      searchPlaceholder: "¿A dónde desea viajar? (Ej: Foz do Iguazú, Trindade, Caldas Novas, Aparecida...)",
+      searchPlaceholder: "¿A dónde desea viajar? (Ej: Foz do Iguazú, Trindade, Caldas Novas, Salvador...)",
       categoryAll: "Todos los Destinos",
       categoryNatureza: "Naturaleza y Cataratas",
       categoryReligioso: "Turismo Religioso",
